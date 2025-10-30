@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  db:
+    image: mysql:5.7
+    container_name: bookstore-mysql
+    restart: always
+    ports:
+      - "3306:3306"  # Expuesto para que VM1 pueda conectarse
+    environment:
+      MYSQL_DATABASE: bookstore_db
+      MYSQL_USER: bookstore_user
+      MYSQL_PASSWORD: "admin"  # Usa una contraseña más segura
+      MYSQL_ROOT_PASSWORD: "admin#123qwe"  # Mejor definir root password explícitamente
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - bookstore_network
+
+volumes:
+  db_data:
+
+networks:
+  bookstore_network:
+    driver: bridge

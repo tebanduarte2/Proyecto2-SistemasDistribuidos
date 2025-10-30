@@ -9,8 +9,8 @@ services:
     environment:
       MYSQL_DATABASE: bookstore_db
       MYSQL_USER: bookstore_user
-      MYSQL_PASSWORD: "admin"  # Usa una contraseña más segura
-      MYSQL_ROOT_PASSWORD: "admin#123qwe"  # Mejor definir root password explícitamente
+      MYSQL_PASSWORD: admin  # Usa una contraseña más segura
+      MYSQL_ROOT_PASSWORD: admin123qwe  # Mejor definir root password explícitamente
     volumes:
       - db_data:/var/lib/mysql
     networks:

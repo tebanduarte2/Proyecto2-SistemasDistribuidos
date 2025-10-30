@@ -1,35 +1,49 @@
 version: '3.8'
 
 services:
-  db:
-    image: mysql:8
-    restart: always
-    environment:
-      MYSQL_DATABASE: bookstore
-      MYSQL_USER: bookstore_user
-      MYSQL_PASSWORD: bookstore_pass
-      MYSQL_ROOT_PASSWORD: root_pass
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - bookstore_net
-
   flaskapp:
     build: .
+    container_name: bookstore-app
     restart: always
     environment:
-      - FLASK_ENV=development
-    ports:
-      - "5000:5000"
-    depends_on:
-      - db
+      # Configuración de MySQL (VM1)
+      - DB_HOST=172.31.31.35  # IP PRIVADA real de VM1
+      - DB_PORT=3306
+      - DB_NAME=bookstore_db
+      - DB_USER=bookstore_user
+      - DB_PASSWORD=admin
+      # Flask
+      - SECRET_KEY=mi_super_secret_key_2024
+    expose:
+      - "5000"
     networks:
       - bookstore_net
 
-volumes:
-  db_data:
+  nginx:
+    image: nginx:alpine
+    container_name: bookstore-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./certbot/conf:/etc/letsencrypt:ro
+      - ./certbot/www:/var/www/certbot:ro
+    depends_on:
+      - flaskapp
+    networks:
+      - bookstore_net
+
+  certbot:
+    image: certbot/certbot
+    container_name: bookstore-certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 networks:
   bookstore_net:
+    driver: bridge

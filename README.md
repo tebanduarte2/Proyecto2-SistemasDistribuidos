@@ -67,7 +67,13 @@ Al presionar "Listar usuarios registrados" se debe iniciar sesión para obtener 
 
 ## Resultados 
 
+<img width="900" height="281" alt="image" src="https://github.com/user-attachments/assets/ab184ea3-2728-4749-9a03-fdab41dd6dc5" />
 
+<img width="354" height="322" alt="image" src="https://github.com/user-attachments/assets/ada3656c-a317-4c81-abf7-b5114cae22a4" />
+
+<img width="917" height="249" alt="image" src="https://github.com/user-attachments/assets/b1561000-a0e7-4cc6-8a8b-563e67f40e9a" />
+
+<img width="921" height="306" alt="image" src="https://github.com/user-attachments/assets/e230f411-955d-4767-bf95-97d5ac087960" />
 
 # 5. Información adicional
 

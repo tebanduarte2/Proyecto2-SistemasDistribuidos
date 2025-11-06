@@ -5,8 +5,7 @@ services:
     build: .
     restart: always
     environment:
-      # Configuración de MySQL (VM1)
-      - DB_HOST=bookstore-db.cb0m6ouewtu7.us-east-1.rds.amazonaws.com # IP PRIVADA real de VM1
+      - DB_HOST=bookstore-db.cb0m6ouewtu7.us-east-1.rds.amazonaws.com
       - DB_PORT=3306
       - DB_NAME=bookstore
       - DB_USER=admin

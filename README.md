@@ -28,32 +28,34 @@ Al ejecutarse en dos máquinas, se están teniendo en cuenta principios como la 
 
 # 3. Ambiente de desarrollo y técnico
 
-El proyecto inicial contaba con dos contenedores de Docker. En el primero se ejecutaba la aplicación, creada en Python usando Flask, mientras que en el segundo se ejecutaba la base de datos en MySQL. Se articulaban usando un Docker Compose.
+El proyecto inicial contaba con dos contenedores de Docker. En el primero se ejecutaba la aplicación, creada en Python usando Flask, mientras que en el segundo se ejecutaba la base de datos en MySQL. Se articulaban usando Docker Compose.
 
 ## Compilación y ejecución
 
 Anteriormente el proyecto se ejecutaba en una única máquina virtual usando el comando ```docker compose up```.
 
-Actualmente el proyecto se ejecuta utilizando dos máquinas vituales de AWS EC2. En la primera se ejecuta la app, el proxy NGINX, el SSL y el dominio, mientras que en la segunda se ejecuta la base de datos MySQL. Se configuró el Docker Compose.
+Actualmente el proyecto se ejecuta utilizando dos máquinas vituales de AWS EC2. En la primera se ejecuta la app, el proxy NGINX, el SSL y el dominio, mientras que en la segunda se ejecuta la base de datos MySQL. Se configuró usando los Docker Compose.
 
-## Detalles del desarrollo
-
-
-
-## Detalles técnicos
-## Configuración de los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
-
-
+## Configuración de los parámetros del proyecto
+En ambas máquinas fue necesario habilitar el puerto 22 para conectarnos a través de SSH desde nuestra dirección IP.
+El puerto que utilizamos para hacer la conexión entre las máquinas virtuales de la app y de la base de datos es el puerto 3306 a través de la IP 172.31.30.49, configuración que hicimos en la máquina virtual de la base de datos. 
+Finalmente, se habilitaron los puertos 443, 80 y 5000 en la aplicación para conectarse a internet usado HTTPS, HTTP y TCP respectivamente.
 
 ## Resultados
 
+<img width="1648" height="754" alt="image" src="https://github.com/user-attachments/assets/ccfe970f-7ce1-4fe8-b87c-b7d3069e3280" />
+
+<img width="1654" height="765" alt="image" src="https://github.com/user-attachments/assets/5e76d9a0-fbf0-402a-bb32-cb6b2df23a7e" />
+
 # 4. Ambiente de ejecución
 
-## IP o nombres de dominio en nube o en la máquina servidor.
+## Dominio
 
-## Configuración de los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
+El dominio que utilizamos para desplegar la aplicación es https://bookstoreeafit.giize.com/. Este es un dominio gratuito.
 
-## Ejecución del servidor en nube
+## Configuración de los parámetros del proyecto
+En la máquina virtual de la aplicación se configuró una IP pública elástica debido a que era necesario que nuestro dominio apuntara siempre a nuestra IP pública.
+IP Pública Elástica: 3.217.130.194/
 
 ## Guía de uso
 
@@ -77,6 +79,6 @@ Al presionar "Listar usuarios registrados" se debe iniciar sesión para obtener 
 
 # 5. Información adicional
 
-# Referencias:
+## Referencias:
 Bookstore original: https://github.com/st0263eafit/st0263-252/blob/main/proyecto2/BookStore.zip
 

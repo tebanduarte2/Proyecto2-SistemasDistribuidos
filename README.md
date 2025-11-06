@@ -18,7 +18,11 @@ El proyecto tiene como objetivo utilizar los conceptos aprendidos en el curso pa
 
 ## 1.1. Objetivos cumplidos
 
+Realizamos el objetivo 1, 2 y 3.
+
 ## 1.2. Objetivos no cumplidos
+
+Tuvimos dificultades para realizar el objetivo 4.
 
 # 2. Diseño, arquitectura, patrones y buenas prácticas
 
